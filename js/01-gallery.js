@@ -22,7 +22,8 @@ function createImageGalleryMarkup(galleryItems) {
 const galleryMarkup = createImageGalleryMarkup(galleryItems);
 galleryContainer.insertAdjacentHTML('beforeend', galleryMarkup);
 
-// console.log(createImageGalleryMarkup(galleryItems));
+
+console.log(createImageGalleryMarkup(galleryItems));
 
 galleryContainer.addEventListener('click', evt => {
     evt.preventDefault();
@@ -37,11 +38,36 @@ galleryContainer.addEventListener('click', evt => {
     instance.show();
 
     galleryContainer.addEventListener('keydown', evt => {
-     if (evt.code === 'Escape') {
-            instance.close();
+     if (evt.key === 'Escape') {
+         instance.close();
+         console.log(evt.key);
      }
-    });
+    },
+    {once: true}
+    );
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
