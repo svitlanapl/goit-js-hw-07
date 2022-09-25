@@ -31,35 +31,28 @@ galleryContainer.addEventListener('click', evt => {
     if (!isGalleryEl) {
         return;
     }
+
     const instance = basicLightbox.create(`
         <img src="${evt.target.dataset.source}" width="800" height="600">
-    `);
+    `, {
+        onShow: () => {
+            document.addEventListener("keydown", closeEscKeyDown);
+        },
+        onClose: () => {
+            document.removeEventListener("keydown", closeEscKeyDown);
+        },
+    }
+    );
 
-    instance.show();
-
-    galleryContainer.addEventListener('keydown', evt => {
+    function closeEscKeyDown(evt) {
      if (evt.key === 'Escape') {
          instance.close();
          console.log(evt.key);
      }
-    },
-    {once: true}
-    );
+    }
+
+    instance.show();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
